@@ -1,6 +1,7 @@
 'use client';
 // Next.js
 import NextLink from 'next/link';
+import clsx from 'clsx';
 // React Icons
 import {
   IoCloseOutline,
@@ -12,60 +13,81 @@ import {
   IoSearchOutline,
   IoShirtOutline
 } from 'react-icons/io5';
+// Store
+import { useUIStore } from '@/store';
+
 
 export const Sidebar = () => {
+  const isSideMenuOpen = useUIStore( state => state.isSideMenuOpen );
+  const closeMenu = useUIStore( state => state.closeSideMenu );
+
   return (
     <div>
       {/* Background */}
-      <div
-        className={`
-          fixed
-          top-0
-          left-0
-          w-screen
-          h-screen
-          z-10
-          bg-black
-          opacity-30
-        `}
-      />
+      {
+        isSideMenuOpen && (
+          <div
+            className={`
+              fixed
+              top-0
+              left-0
+              w-screen
+              h-screen
+              z-10
+              bg-black
+              opacity-30
+            `}
+          />
+        )
+      }
 
       {/* Blur */}
-      <div
-        className={`
-          fade-in
-          fixed
-          top-0
-          left-0
-          w-screen
-          h-screen
-          z-10
-          backdrop-filter
-          backdrop-blur-sm
-        `}
-      />
+      {
+        isSideMenuOpen && (
+          <div
+            onClick={ closeMenu }
+            className={`
+              fade-in
+              fixed
+              top-0
+              left-0
+              w-screen
+              h-screen
+              z-10
+              backdrop-filter
+              backdrop-blur-sm
+            `}
+          />
+        )
+      }
 
       {/* Sidemenu */}
       <nav
-        className={`
-          fixed
-          p-5
-          right-0
-          top-0
-          w-[400px]
-          h-screen
-          bg-white
-          z-20
-          shadow-2xl
-          transform
-          transition-all
-          duration-300
-        `}
+        className={
+          clsx(`
+            fixed
+            p-5
+            right-0
+            top-0
+            w-[400px]
+            h-screen
+            bg-white
+            z-20
+            shadow-2xl
+            transform
+            transition-all
+            duration-300
+            `,
+            {
+              "translate-x-full": !isSideMenuOpen
+            }
+          )
+        }
       >
         <IoCloseOutline
           size={ 50 }
           className='absolute top-5 right-5 cursor-pointer'
-          onClick={ () => console.log( 'click' ) }
+          onClick={ () => closeMenu() }
         />
 
         <div className='relative mt-14'>
@@ -100,13 +122,13 @@ export const Sidebar = () => {
           className={`
             flex
             items-center
-            mt-10
+            mt-5
             p-2
             hover:bg-gray-100 rounded transition-all
           `}
         >
-          <IoPersonOutline size={ 30 } />
-          <span className='ml-3 text-xl'>Perfil</span>
+          <IoPersonOutline size={ 25 } />
+          <span className='ml-3'>Perfil</span>
         </NextLink>
         {/* List Item */}
         {/* List Item */}
@@ -115,13 +137,13 @@ export const Sidebar = () => {
           className={`
             flex
             items-center
-            mt-10
+            mt-5
             p-2
             hover:bg-gray-100 rounded transition-all
           `}
         >
-          <IoTicketOutline size={ 30 } />
-          <span className='ml-3 text-xl'>Ordenes</span>
+          <IoTicketOutline size={ 25 } />
+          <span className='ml-3'>Ordenes</span>
         </NextLink>
         {/* List Item */}
         {/* List Item */}
@@ -130,13 +152,13 @@ export const Sidebar = () => {
           className={`
             flex
             items-center
-            mt-10
+            mt-5
             p-2
             hover:bg-gray-100 rounded transition-all
           `}
         >
-          <IoLogInOutline size={ 30 } />
-          <span className='ml-3 text-xl'>Ingresar</span>
+          <IoLogInOutline size={ 25 } />
+          <span className='ml-3'>Ingresar</span>
         </NextLink>
         {/* List Item */}
         {/* List Item */}
@@ -145,13 +167,13 @@ export const Sidebar = () => {
           className={`
             flex
             items-center
-            mt-10
+            mt-5
             p-2
             hover:bg-gray-100 rounded transition-all
           `}
         >
-          <IoLogOutOutline size={ 30 } />
-          <span className='ml-3 text-xl'>Salir</span>
+          <IoLogOutOutline size={ 25 } />
+          <span className='ml-3'>Salir</span>
         </NextLink>
         {/* List Item */}
 
@@ -175,8 +197,8 @@ export const Sidebar = () => {
             hover:bg-gray-100 rounded transition-all
           `}
         >
-          <IoShirtOutline size={ 30 } />
-          <span className='ml-3 text-xl'>Productos</span>
+          <IoShirtOutline size={ 25 } />
+          <span className='ml-3'>Productos</span>
         </NextLink>
         {/* List Item */}
         {/* List Item */}
@@ -185,13 +207,13 @@ export const Sidebar = () => {
           className={`
             flex
             items-center
-            mt-10
+            mt-5
             p-2
             hover:bg-gray-100 rounded transition-all
           `}
         >
-          <IoTicketOutline size={ 30 } />
-          <span className='ml-3 text-xl'>Ordenes</span>
+          <IoTicketOutline size={ 25 } />
+          <span className='ml-3'>Ordenes</span>
         </NextLink>
         {/* List Item */}
         {/* List Item */}
@@ -200,13 +222,13 @@ export const Sidebar = () => {
           className={`
             flex
             items-center
-            mt-10
+            mt-5
             p-2
             hover:bg-gray-100 rounded transition-all
           `}
         >
-          <IoPeopleOutline size={ 30 } />
-          <span className='ml-3 text-xl'>Usuarios</span>
+          <IoPeopleOutline size={ 25 } />
+          <span className='ml-3'>Usuarios</span>
         </NextLink>
         {/* List Item */}
       </nav>

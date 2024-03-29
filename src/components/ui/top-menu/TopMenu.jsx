@@ -1,12 +1,20 @@
+'use client'
 // Next.js
 import NextLink from 'next/link';
+// React Icons
 import {
   IoCartOutline,
   IoSearchOutline
 } from 'react-icons/io5';
+// Config
 import { titleFont } from '@/config';
+// Store
+import { useUIStore } from '@/store';
 
 export const TopMenu = () => {
+  const openMenu = useUIStore( state => state.openSideMenu );
+
+
   return (
     <nav className='flex px-5 justify-between items-center w-full'>
       <div>
@@ -78,6 +86,7 @@ export const TopMenu = () => {
 
         <button
           className='m-2 p-2 rounded-md transition-all hover:bg-gray-100'
+          onClick={ openMenu }
         >
           Menú
         </button>
