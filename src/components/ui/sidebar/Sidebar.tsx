@@ -1,7 +1,16 @@
 'use client';
+// Next.js
+import NextLink from 'next/link';
+// React Icons
 import {
   IoCloseOutline,
-  IoSearchOutline
+  IoLogInOutline,
+  IoLogOutOutline,
+  IoPeopleOutline,
+  IoPersonOutline,
+  IoTicketOutline,
+  IoSearchOutline,
+  IoShirtOutline
 } from 'react-icons/io5';
 
 export const Sidebar = () => {
@@ -84,8 +93,123 @@ export const Sidebar = () => {
             `}
           />
         </div>
-      </nav>
 
+        {/* List Item */}
+        <NextLink
+          href='/'
+          className={`
+            flex
+            items-center
+            mt-10
+            p-2
+            hover:bg-gray-100 rounded transition-all
+          `}
+        >
+          <IoPersonOutline size={ 30 } />
+          <span className='ml-3 text-xl'>Perfil</span>
+        </NextLink>
+        {/* List Item */}
+        {/* List Item */}
+        <NextLink
+          href='/'
+          className={`
+            flex
+            items-center
+            mt-10
+            p-2
+            hover:bg-gray-100 rounded transition-all
+          `}
+        >
+          <IoTicketOutline size={ 30 } />
+          <span className='ml-3 text-xl'>Ordenes</span>
+        </NextLink>
+        {/* List Item */}
+        {/* List Item */}
+        <NextLink
+          href='/'
+          className={`
+            flex
+            items-center
+            mt-10
+            p-2
+            hover:bg-gray-100 rounded transition-all
+          `}
+        >
+          <IoLogInOutline size={ 30 } />
+          <span className='ml-3 text-xl'>Ingresar</span>
+        </NextLink>
+        {/* List Item */}
+        {/* List Item */}
+        <NextLink
+          href='/'
+          className={`
+            flex
+            items-center
+            mt-10
+            p-2
+            hover:bg-gray-100 rounded transition-all
+          `}
+        >
+          <IoLogOutOutline size={ 30 } />
+          <span className='ml-3 text-xl'>Salir</span>
+        </NextLink>
+        {/* List Item */}
+
+        <div
+          className={`
+            w-full
+            h-px
+            bg-gray-200
+            my-10
+          `}
+        />
+
+        {/* List Item */}
+        <NextLink
+          href='/'
+          className={`
+            flex
+            items-center
+            mt-10
+            p-2
+            hover:bg-gray-100 rounded transition-all
+          `}
+        >
+          <IoShirtOutline size={ 30 } />
+          <span className='ml-3 text-xl'>Productos</span>
+        </NextLink>
+        {/* List Item */}
+        {/* List Item */}
+        <NextLink
+          href='/'
+          className={`
+            flex
+            items-center
+            mt-10
+            p-2
+            hover:bg-gray-100 rounded transition-all
+          `}
+        >
+          <IoTicketOutline size={ 30 } />
+          <span className='ml-3 text-xl'>Ordenes</span>
+        </NextLink>
+        {/* List Item */}
+        {/* List Item */}
+        <NextLink
+          href='/'
+          className={`
+            flex
+            items-center
+            mt-10
+            p-2
+            hover:bg-gray-100 rounded transition-all
+          `}
+        >
+          <IoPeopleOutline size={ 30 } />
+          <span className='ml-3 text-xl'>Usuarios</span>
+        </NextLink>
+        {/* List Item */}
+      </nav>
     </div>
   );
 }
