@@ -69,7 +69,7 @@ export const Sidebar = () => {
             p-5
             right-0
             top-0
-            w-[400px]
+            w-[300px]
             h-screen
             bg-white
             z-20
