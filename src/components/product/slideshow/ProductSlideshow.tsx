@@ -1,8 +1,27 @@
 'use client';
-
+// React
+import {
+  useRef,
+  useState
+} from 'react';
+// Next JS
+import Image from 'next/image';
+import { Swiper as SwiperObject } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/navigation';
+import 'swiper/css/thumbs';
+
+import './slideshow.css';
+
+import {
+  FreeMode,
+  Navigation,
+  Thumbs
+} from 'swiper/modules';
+
 
 interface Props {
   images: string[];
@@ -10,20 +29,43 @@ interface Props {
   className?: string;
 }
 
+export const ProductSlideshow = ({
+  images,
+  title,
+  className
+}: Props) => {
+  const [ thumbsSwiper, setThumbsSwiper ] = useState<SwiperObject>();
 
-export const ProductSlideshow = ({ images, title, className }: Props) => {
   return (
     <div className={ className }>
       <Swiper
-        spaceBetween={ 50 }
-        slidesPerView={ 3 }
-        onSlideChange={ () => console.log( 'Slide Changed' ) }
-        onSwiper={ ( swiper ) => console.log( swiper ) }
+        style={{
+          '--swiper-navigation-color': '#fff',
+          '--swiper-pagination-color': '#fff',
+        } as React.CSSProperties }
+        spaceBetween={ 10 }
+        navigation={ true }
+        thumbs={{ swiper: thumbsSwiper }}
+        modules={[
+          FreeMode,
+          Navigation,
+          Thumbs
+        ]}
+        className='mySwiper2'
       >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
+        {
+          images.map( image => (
+            <SwiperSlide key={ image }>
+              <Image
+                width={ 1024 }
+                height={ 800 }
+                src={ `/products/${ image }` }
+                alt={ title }
+                className='rounded-lg object-fill'
+              />
+            </SwiperSlide>
+          ))
+        }
       </Swiper>
     </div>
   );
