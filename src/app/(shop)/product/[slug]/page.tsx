@@ -1,6 +1,11 @@
+// Next JS
 import { notFound } from 'next/navigation';
-import { initialData } from '@/seed/seed';
+// Componentes
+import { SizeSelector } from '@/components';
+// Config
 import { titleFont } from '@/config';
+// Seed
+import { initialData } from '@/seed/seed';
 
 
 interface Props {
@@ -34,6 +39,10 @@ export default function({ params }: Props) {
         </p>
 
         {/*TODO: Sizes Selector*/}
+        <SizeSelector
+          selectedSize={ product.sizes[1] }
+          availableSizes={ product.sizes }
+        />
         {/*TODO: Count Selector*/}
 
         <button className='btn-primary my-5'>
