@@ -1,7 +1,10 @@
 // Next JS
 import { notFound } from 'next/navigation';
 // Componentes
-import { SizeSelector } from '@/components';
+import {
+  QuantitySelector,
+  SizeSelector
+} from '@/components';
 // Config
 import { titleFont } from '@/config';
 // Seed
@@ -38,12 +41,15 @@ export default function({ params }: Props) {
           ${ product.price }
         </p>
 
-        {/*TODO: Sizes Selector*/}
+        {/* Sizes Selector*/}
         <SizeSelector
           selectedSize={ product.sizes[1] }
           availableSizes={ product.sizes }
         />
-        {/*TODO: Count Selector*/}
+        {/* Count Selector*/}
+        <QuantitySelector
+          quantity={ 1 }
+        />
 
         <button className='btn-primary my-5'>
           Agregar al carrito
