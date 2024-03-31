@@ -14,7 +14,7 @@ export default function ShopLayout({
       <TopMenu />
       <Sidebar />
 
-      <div className='px-10'>
+      <div className='px-5'>
         { children }
       </div>
     </div>
