@@ -17,6 +17,7 @@ import 'swiper/css/thumbs';
 import './slideshow.css';
 
 import {
+  Autoplay,
   FreeMode,
   Navigation,
   Thumbs
@@ -45,8 +46,14 @@ export const ProductSlideshow = ({
         } as React.CSSProperties }
         spaceBetween={ 10 }
         navigation={ true }
-        thumbs={{ swiper: thumbsSwiper }}
+        autoplay={{
+          delay: 3000
+        }}
+        thumbs={{
+          swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null
+        }}
         modules={[
+          Autoplay,
           FreeMode,
           Navigation,
           Thumbs
@@ -59,6 +66,34 @@ export const ProductSlideshow = ({
               <Image
                 width={ 1024 }
                 height={ 800 }
+                src={ `/products/${ image }` }
+                alt={ title }
+                className='rounded-lg object-fill'
+              />
+            </SwiperSlide>
+          ))
+        }
+      </Swiper>
+
+       <Swiper
+        onSwiper={ setThumbsSwiper }
+        spaceBetween={ 10 }
+        slidesPerView={ 4 }
+        freeMode={ true }
+        watchSlidesProgress={ true }
+        modules={[
+          FreeMode,
+          Navigation,
+          Thumbs
+        ]}
+        className="mySwiper"
+      >
+        {
+          images.map( image => (
+            <SwiperSlide key={ image }>
+              <Image
+                width={ 300 }
+                height={ 300 }
                 src={ `/products/${ image }` }
                 alt={ title }
                 className='rounded-lg object-fill'
