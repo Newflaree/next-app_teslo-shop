@@ -8,7 +8,7 @@ export const PageNotFound = () => {
     <div
       className={`
         flex
-        flex-col
+        flex-col-reverse
         md:flex-row
         h-[800px]
         w-full
