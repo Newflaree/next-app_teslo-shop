@@ -1,6 +1,7 @@
 // Next.js
 import NextLink from 'next/link';
 import Image from 'next/image';
+import { redirect } from 'next/navigation';
 // Components
 import {
   Title,
@@ -16,6 +17,9 @@ const productsInCart = [
 ];
 
 export default function() {
+  //redirect( '/empty' )
+
+
   return (
     <div
       className={`
